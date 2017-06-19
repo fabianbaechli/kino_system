@@ -9,5 +9,6 @@ public class Film {
     Time dauer;
     String mitgliedsName;
     int altersbegrenzung;
+    boolean dreidfaehigkeit;
     String sprache;
 }
