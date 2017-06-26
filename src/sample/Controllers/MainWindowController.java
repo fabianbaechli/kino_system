@@ -1,7 +1,11 @@
 package sample.Controllers;
 
 import javafx.fxml.Initializable;
+import sample.Models.Saal;
+
 import java.net.URL;
+import java.sql.Time;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -9,7 +13,10 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-      // TODO: Handle UI Logic
+        Saal saal = new Saal();
     }
 
+    private void addRow(Saal saal, Date datum, Time time, Float price) {
+
+    }
 }

@@ -16,20 +16,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-<<<<<<< HEAD
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/jfoenix.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-=======
     <orderEntry type="library" name="jfoenix (1)" level="project" />
     <orderEntry type="library" name="gson-2.6.2-sources" level="project" />
     <orderEntry type="library" name="gson-2.8.0" level="project" />
->>>>>>> master
   </component>
 </module>
