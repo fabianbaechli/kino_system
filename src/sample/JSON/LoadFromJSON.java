@@ -5,7 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import sample.Models.Film;
+import sample.Models.Person;
 import sample.Sammlungen.FilmeSammlung;
+import sample.Sammlungen.PersonenSammelung;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +20,7 @@ public class LoadFromJSON {
     private JsonParser parser;
 
 
-    public void Load(String path) throws FileNotFoundException {
+    public void LoadMovies(String path) throws FileNotFoundException {
         parser = new JsonParser();
         Object obj = parser.parse(new FileReader(path));
 
@@ -35,6 +37,46 @@ public class LoadFromJSON {
                             jsonObject.get("altersbegrenzung").getAsString(),
                             jsonObject.get("3dfaehigkeit").getAsString(),
                             jsonObject.get("sprache").getAsString()
+                    )
+            );
+
+        }
+    }
+    public void LoadPersonen(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray personen = (JsonArray) obj;
+
+        for (JsonElement j : personen) {
+            JsonObject jsonObject = j.getAsJsonObject();
+            PersonenSammelung.Personen.add(
+                    new Person(
+                            jsonObject.get("id").getAsString(),
+                            jsonObject.get("name").getAsString(),
+                            jsonObject.get("vorname").getAsString(),
+                            jsonObject.get("email").getAsString(),
+                            jsonObject.get("telefonummer").getAsString()
+                    )
+            );
+
+        }
+    }
+    public void LoadSaal(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray personen = (JsonArray) obj;
+
+        for (JsonElement j : personen) {
+            JsonObject jsonObject = j.getAsJsonObject();
+            PersonenSammelung.Personen.add(
+                    new Person(
+                            jsonObject.get("id").getAsString(),
+                            jsonObject.get("name").getAsString(),
+                            jsonObject.get("vorname").getAsString(),
+                            jsonObject.get("email").getAsString(),
+                            jsonObject.get("telefonummer").getAsString()
                     )
             );
 
