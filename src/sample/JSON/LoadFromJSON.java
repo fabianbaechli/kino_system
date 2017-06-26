@@ -5,9 +5,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import sample.Models.Film;
+import sample.Models.Kino;
 import sample.Models.Person;
+import sample.Models.Saal;
 import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
+import sample.ViewModels.Kinobuchungsystem;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,10 +18,26 @@ import java.io.FileReader;
 /**
  * Created by Fabrice on 19.06.2017.
  */
+
 public class LoadFromJSON {
 
     private JsonParser parser;
+    private String KinoCon = "/Kinos.json";
+    private String MovieCon = "/Movies.json";
+    private String PersonCon = "/Persons.json";
+    private String SaalCon = "/Saale.json";
 
+    public LoadFromJSON (){
+        try{
+            LoadKinos(KinoCon);
+            LoadMovies(MovieCon);
+            LoadPersonen(PersonCon);
+            LoadSaal(SaalCon);
+        }
+        catch (FileNotFoundException e){
+            //Handle Exception
+        }
+    }
 
     public void LoadMovies(String path) throws FileNotFoundException {
         parser = new JsonParser();
@@ -62,24 +81,44 @@ public class LoadFromJSON {
 
         }
     }
+
     public void LoadSaal(String path) throws FileNotFoundException {
         parser = new JsonParser();
         Object obj = parser.parse(new FileReader(path));
 
-        JsonArray personen = (JsonArray) obj;
+        JsonArray saale = (JsonArray) obj;
 
-        for (JsonElement j : personen) {
+        for (JsonElement j : saale) {
             JsonObject jsonObject = j.getAsJsonObject();
-            PersonenSammelung.Personen.add(
-                    new Person(
+            Kino.saale.add(
+                    new Saal(
                             jsonObject.get("id").getAsString(),
+                            jsonObject.get("anzahlSitzplaetze").getAsString(),
                             jsonObject.get("name").getAsString(),
-                            jsonObject.get("vorname").getAsString(),
-                            jsonObject.get("email").getAsString(),
-                            jsonObject.get("telefonummer").getAsString()
+                            jsonObject.get("leinwandhoehe").getAsString(),
+                            jsonObject.get("dreidfaehigkeit").getAsBoolean()
                     )
             );
+        }
+    }
 
+    public void LoadKinos(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray kinos = (JsonArray) obj;
+
+        for (JsonElement j : kinos) {
+            JsonObject jsonObject = j.getAsJsonObject();
+            Kinobuchungsystem.Kinos.add(
+                    new Kino(
+                            jsonObject.get("id").getAsString(),
+                            jsonObject.get("name").getAsString(),
+                            jsonObject.get("mitgliedsname").getAsString(),
+                            jsonObject.get("email").getAsString(),
+                            jsonObject.get("adresse").getAsString()
+                    )
+            );
         }
     }
 }

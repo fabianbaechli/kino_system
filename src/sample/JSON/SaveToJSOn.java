@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import sample.Models.Kino;
 import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
+import sample.ViewModels.Kinobuchungsystem;
 
 import java.io.FileWriter;
 import java.io.Writer;
@@ -36,6 +37,16 @@ public class SaveToJSOn {
         try (Writer writer = new FileWriter("Saale.json")) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(Kino.saale, writer);
+        }
+        catch (Exception ex) {
+            System.out.println("Didnt write to JSON");
+        }
+    }
+
+    public static void SaveKino() {
+        try (Writer writer = new FileWriter("Kinos.json")) {
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(Kinobuchungsystem.Kinos, writer);
         }
         catch (Exception ex) {
             System.out.println("Didnt write to JSON");
