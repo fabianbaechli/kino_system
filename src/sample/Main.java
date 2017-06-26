@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            StackPane page = FXMLLoader.load(Main.class.getResource("/Views/MainWindow.fxml"));
+            StackPane page = FXMLLoader.load(Main.class.getResource("Views/MainWindow.fxml"));
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Kino System");
