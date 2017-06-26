@@ -17,5 +17,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jfoenix (1)" level="project" />
+    <orderEntry type="library" name="gson-2.6.2-sources" level="project" />
   </component>
 </module>
