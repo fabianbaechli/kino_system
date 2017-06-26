@@ -18,4 +18,23 @@ public class Saal {
         this.dreidfaehigkeit = dreidfaehigkeit;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getAnzahlSitzplaetze() {
+        return anzahlSitzplaetze;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLeinwandhoehe() {
+        return leinwandhoehe;
+    }
+
+    public boolean isDreidfaehigkeit() {
+        return dreidfaehigkeit;
+    }
 }
