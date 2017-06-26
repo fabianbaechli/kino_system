@@ -26,3 +26,6 @@ hs_err_pid*
 
 #ide
 .idea/
+
+*.iml
+out/production/kino_system/sample/Views/MainWindow.fxml
