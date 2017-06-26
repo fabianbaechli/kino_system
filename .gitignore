@@ -22,7 +22,10 @@
 hs_err_pid*
 
 #Mac
-*.DS_Store
+.DS_Store
 
 #ide
-.idea/
+.idea/*
+
+*.iml
+*.xml

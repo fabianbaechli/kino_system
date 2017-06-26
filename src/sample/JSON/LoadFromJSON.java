@@ -61,6 +61,7 @@ public class LoadFromJSON {
 
         }
     }
+
     public void LoadPersonen(String path) throws FileNotFoundException {
         parser = new JsonParser();
         Object obj = parser.parse(new FileReader(path));
