@@ -10,14 +10,20 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/libs/gson-2.8.0.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/gson-2.8.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jfoenix (1)" level="project" />
-    <orderEntry type="library" name="gson-2.6.2-sources" level="project" />
-    <orderEntry type="library" name="gson-2.8.0" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/jfoenix.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
