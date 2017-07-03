@@ -31,7 +31,11 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         createUser.setOnMouseClicked((event -> {
-            StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
+            try {
+                StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }));
 
         Saal saal = new Saal("1", "123", "127839182", "5 Meter", true);
