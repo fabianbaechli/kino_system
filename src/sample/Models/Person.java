@@ -28,4 +28,5 @@ public class Person {
         this.email = email;
         this.telefonnummer = telefonnummer;
     }
+
 }

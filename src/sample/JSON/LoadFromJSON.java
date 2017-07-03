@@ -11,6 +11,7 @@ import sample.Models.Saal;
 import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
 import sample.ViewModels.Kinobuchungsystem;
+import sample.ViewModels.Vorstellung;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -27,13 +28,15 @@ public class LoadFromJSON {
     private String MovieCon = "/Movies.json";
     private String PersonCon = "/Persons.json";
     private String SaalCon = "/Saale.json";
+    private String VorstPath = "/Vorst.json";
 
-    public LoadFromJSON (){
+    public void LoadAll (){
         try{
             LoadKinos(KinoCon);
             LoadMovies(MovieCon);
             LoadPersonen(PersonCon);
             LoadSaal(SaalCon);
+            LoadVorstellungen(VorstPath);
         }
         catch (FileNotFoundException e){
             //Handle Exception
@@ -86,18 +89,28 @@ public class LoadFromJSON {
 
     public void LoadSaal(String path) throws FileNotFoundException {
         parser = new JsonParser();
+        String kinoId = "";
         Object obj = parser.parse(new FileReader(path));
 
         JsonArray saale = (JsonArray) obj;
 
         for (JsonElement j : saale) {
             JsonObject jsonObject = j.getAsJsonObject();
-            Kino.saale.add(
+
+
+            for (Kino i: Kinobuchungsystem.Kinos
+                 ) {
+                if (i.getID() == jsonObject.get("id").getAsString()){
+                    kinoId = i.getID();
+                }
+            }
+            Kinobuchungsystem.saale.add(
                     new Saal(
                             jsonObject.get("id").getAsString(),
                             jsonObject.get("anzahlSitzplaetze").getAsString(),
                             jsonObject.get("name").getAsString(),
                             jsonObject.get("leinwandhoehe").getAsString(),
+                            kinoId,
                             jsonObject.get("dreidfaehigkeit").getAsBoolean()
                     )
             );
@@ -119,6 +132,42 @@ public class LoadFromJSON {
                             jsonObject.get("mitgliedsname").getAsString(),
                             jsonObject.get("email").getAsString(),
                             jsonObject.get("adresse").getAsString()
+                    )
+            );
+        }
+    }
+    public void LoadVorstellungen(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        String saalID = "";
+        String filmID = "";
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray Vorstellungen = (JsonArray) obj;
+
+        for (JsonElement j : Vorstellungen) {
+            JsonObject jsonObject = j.getAsJsonObject();
+
+
+            for (Saal i: Kinobuchungsystem.saale
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()){
+                    saalID = i.getID();
+                }
+            }
+            for (Film i: FilmeSammlung.Filme
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()){
+                    filmID = i.getID();
+                }
+            }
+            Kinobuchungsystem.Vorstellungen.add(
+                    new Vorstellung(
+                            jsonObject.get("_vorstellungsID").getAsString(),
+                            saalID,
+                            filmID,
+                            jsonObject.get("_date").getAsString(),
+                            jsonObject.get("_time").getAsString(),
+                            jsonObject.get("_preis").getAsInt()
                     )
             );
         }

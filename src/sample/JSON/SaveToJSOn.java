@@ -7,6 +7,7 @@ import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
 import sample.ViewModels.Kinobuchungsystem;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.Writer;
 
@@ -15,8 +16,22 @@ import java.io.Writer;
  */
 public class SaveToJSOn {
 
-    public static void SaveMovies() {
-        try (Writer writer = new FileWriter("Movies.json")) {
+    private String KinoCon = "Kinos.json";
+    private String MovieCon = "Movies.json";
+    private String PersonCon = "Persons.json";
+    private String SaalCon = "Saale.json";
+    private String VorstCon = "Vorst.json";
+
+    public void SaveAll(){
+       SaveMovies(MovieCon);
+       SavePersonen(PersonCon);
+       SaveSaale(SaalCon);
+       SaveKino(KinoCon);
+        SaveVorstellung(VorstCon);
+    }
+
+    public void SaveMovies(String path) {
+        try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(FilmeSammlung.Filme, writer);
         }
@@ -24,8 +39,8 @@ public class SaveToJSOn {
             System.out.println("Didnt write to JSON");
         }
     }
-    public static void SavePersonen() {
-        try (Writer writer = new FileWriter("Personen.json")) {
+    public void SavePersonen(String path) {
+        try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(PersonenSammelung.Personen, writer);
         }
@@ -33,20 +48,30 @@ public class SaveToJSOn {
             System.out.println("Didnt write to JSON");
         }
     }
-    public static void SaveSaale() {
-        try (Writer writer = new FileWriter("Saale.json")) {
+    public void SaveSaale(String path) {
+        try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
-            gson.toJson(Kino.saale, writer);
+            gson.toJson(Kinobuchungsystem.saale, writer);
         }
         catch (Exception ex) {
             System.out.println("Didnt write to JSON");
         }
     }
 
-    public static void SaveKino() {
-        try (Writer writer = new FileWriter("Kinos.json")) {
+    public void SaveKino(String path) {
+        try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(Kinobuchungsystem.Kinos, writer);
+        }
+        catch (Exception ex) {
+            System.out.println("Didnt write to JSON");
+        }
+    }
+
+    public void SaveVorstellung(String path) {
+        try (Writer writer = new FileWriter(path)) {
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(Kinobuchungsystem.Vorstellungen, writer);
         }
         catch (Exception ex) {
             System.out.println("Didnt write to JSON");

@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import sample.JSON.LoadFromJSON;
+import sample.JSON.SaveToJSOn;
 import sample.Models.Person;
 import sample.Models.Saal;
 
@@ -37,6 +39,8 @@ public class createUserController implements Initializable {
     String tel;
     String email;
 
+    SaveToJSOn svt = new SaveToJSOn();
+
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -54,6 +58,7 @@ public class createUserController implements Initializable {
 
             if (checkValidation()){
                 new Person(name,vorname,email,tel);
+                svt.SaveAll();
                 Stage stage = (Stage) bntAccept.getScene().getWindow();
                 stage.close();
             }

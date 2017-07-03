@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainWindowController">
+   <children>
+      <JFXTextField fx:id="inputTel" layoutX="163.0" layoutY="28.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets bottom="100.0" left="150.0" />
+         </StackPane.margin></JFXTextField>
+      <JFXTextField fx:id="inputName" layoutX="163.0" layoutY="83.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets bottom="400.0" left="150.0" />
+         </StackPane.margin></JFXTextField>
+      <JFXTextField fx:id="inputVorname" layoutX="163.0" layoutY="141.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets bottom="300.0" left="150.0" />
+         </StackPane.margin></JFXTextField>
+      <JFXTextField fx:id="inputEmail" layoutX="163.0" layoutY="189.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets bottom="200.0" left="150.0" />
+         </StackPane.margin></JFXTextField>
+      <Label layoutX="37.0" layoutY="30.0" minHeight="33.0" prefHeight="33.0" prefWidth="118.0" text="Name">
+         <StackPane.margin>
+            <Insets bottom="400.0" right="250.0" />
+         </StackPane.margin></Label>
+      <Label layoutX="37.0" layoutY="85.0" minHeight="33.0" prefHeight="33.0" prefWidth="118.0" text="Telefonnummer">
+         <StackPane.margin>
+            <Insets bottom="100.0" right="250.0" />
+         </StackPane.margin></Label>
+      <Label layoutX="37.0" layoutY="143.0" minHeight="33.0" prefHeight="33.0" prefWidth="118.0" text="Email">
+         <StackPane.margin>
+            <Insets bottom="200.0" right="250.0" />
+         </StackPane.margin></Label>
+      <Label layoutX="37.0" layoutY="191.0" minHeight="33.0" prefHeight="33.0" prefWidth="118.0" text="Vorname">
+         <StackPane.margin>
+            <Insets bottom="300.0" right="250.0" />
+         </StackPane.margin></Label>
+      <HBox maxHeight="200.0" minHeight="200.0" prefHeight="200.0" prefWidth="394.0">
+         <StackPane.margin>
+            <Insets top="250.0" />
+         </StackPane.margin>
+         <children>
+            <JFXButton fx:id="bntCancel" text="Zurück">
+               <HBox.margin>
+                  <Insets left="50.0" top="100.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="bntAccept" text="OK">
+               <HBox.margin>
+                  <Insets left="150.0" top="100.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</StackPane>
