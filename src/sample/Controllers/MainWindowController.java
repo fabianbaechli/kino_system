@@ -1,21 +1,30 @@
 package sample.Controllers;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import sample.Models.Saal;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
     @FXML
-    JFXListView Vorstellungen;
+    private
+    JFXListView<GridPane> Vorstellungen;
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -34,7 +43,39 @@ public class MainWindowController implements Initializable {
         try {
             pane = FXMLLoader.load(MainWindowController.class.getResource("../Views/vorstellungEntry.fxml"));
             GridPane gridPane = (GridPane) pane.getChildren().get(0);
+            gridPane.setOnMouseClicked((mouseEvent) -> {
+                if (mouseEvent.getClickCount() == 2) {
+                    try {
+                        StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
+                        AnchorPane anchorPane = (AnchorPane) stackPane.getChildren().get(0);
+                        JFXComboBox comboBox = (JFXComboBox) anchorPane.getChildren().get(0);
+                        JFXTextField numberOfParticipants = (JFXTextField) anchorPane.getChildren().get(1);
 
+                        comboBox.getItems().add("Fabian Bächli");
+                        comboBox.getItems().add("Daniel Peters");
+                        comboBox.getItems().add("Leonard Schütz");
+                        comboBox.getItems().add("Fabrice Bosshard");
+                        comboBox.getItems().add("Igor Cetkovic");
+
+                        numberOfParticipants.setOnKeyPressed((event -> {
+                            String input = event.getText();
+                            System.out.println(input);
+                            try {
+                                Integer number = Integer.parseInt(input);
+                            } catch (Exception e) {
+                                numberOfParticipants.setText("");
+                            }
+
+                        }));
+                        Stage stage = new Stage();
+                        stage.setTitle("New Node");
+                        stage.setScene(new Scene(stackPane));
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
             gridPane.add(saalLabel, 0, 0);
             gridPane.add(filmLabel, 1, 0);
             gridPane.add(datumLabel, 2, 0);
