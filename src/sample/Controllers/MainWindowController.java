@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
     @FXML
-    JFXListView Vorstellungen;
+    JFXListView<GridPane> Vorstellungen;
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
