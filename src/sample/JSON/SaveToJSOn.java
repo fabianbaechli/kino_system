@@ -2,12 +2,9 @@ package sample.JSON;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import sample.Models.Kino;
 import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
 import sample.ViewModels.Kinobuchungsystem;
-
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.Writer;
 
