@@ -11,7 +11,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <JFXDatePicker fx:id="date_picker" layoutX="298.0" layoutY="28.0" />
-            <JFXButton layoutX="713.0" layoutY="455.0" />
+            <JFXButton buttonType="RAISED" layoutX="673.0" layoutY="436.0" ripplerFill="WHITE" style="-fx-background-color: #D81B60;" textFill="WHITE" />
             <JFXListView fx:id="Vorstellungen" cellHorizontalMargin="6.0" layoutX="35.0" layoutY="88.0" prefHeight="278.0" prefWidth="734.0" showTooltip="true" />
          </children>
       </AnchorPane>
