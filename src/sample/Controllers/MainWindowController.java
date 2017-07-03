@@ -13,7 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import sample.JSON.LoadFromJSON;
+import sample.Models.Film;
 import sample.Models.Saal;
+import sample.Sammlungen.FilmeSammlung;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +47,12 @@ public class MainWindowController implements Initializable {
             }
         }));
         */
+
+        LoadFromJSON loader = new LoadFromJSON();
+        loader.LoadAll();
+        for (Film i : FilmeSammlung.Filme) {
+            System.out.println(i.getID());
+        }
     }
 
     private void addRow(Saal saal, String film, String datum, String time, Float price) {
