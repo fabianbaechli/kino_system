@@ -44,8 +44,6 @@ public class MainWindowController implements Initializable {
             }
         }));
         */
-        Saal saal = new Saal("1", "123", "127839182", "5 Meter", true);
-        addRow(saal, "Iron Man", "12.12.2017", "08:15", 14.95F);
     }
 
     private void addRow(Saal saal, String film, String datum, String time, Float price) {

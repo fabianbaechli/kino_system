@@ -25,7 +25,7 @@ public class Vorstellung {
         _saalID = saal;
         _filmID = film;
         _date = Date.from(Instant.now());
-        _time = Time.valueOf(time);
+        _time = new Time(System.currentTimeMillis());
         _preis = preis;
     }
     public Vorstellung(String VorstellungsID,String saal, String film, String date, String time, int preis) {

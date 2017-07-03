@@ -24,11 +24,11 @@ import java.util.UUID;
 public class LoadFromJSON {
 
     private JsonParser parser;
-    private String KinoCon = "/Kinos.json";
-    private String MovieCon = "/Movies.json";
-    private String PersonCon = "/Persons.json";
-    private String SaalCon = "/Saale.json";
-    private String VorstPath = "/Vorst.json";
+    private String KinoCon = "Kinos.json";
+    private String MovieCon = "Movies.json";
+    private String PersonCon = "Persons.json";
+    private String SaalCon = "Saale.json";
+    private String VorstPath = "Vorst.json";
 
     public void LoadAll (){
         try{
