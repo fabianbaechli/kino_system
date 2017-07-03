@@ -11,9 +11,9 @@ public class Saal {
     private String name;
     private UUID kinoID;
     private String leinwandhoehe;
-    private boolean dreidfaehigkeit;
+    private String dreidfaehigkeit;
 
-    public Saal(String anzahlSitzplaetze, String name, String leinwandhoehe, boolean dreidfaehigkeit,String kinoID){
+    public Saal(String anzahlSitzplaetze, String name, String leinwandhoehe, String dreidfaehigkeit, String kinoID) {
         this.id = UUID.randomUUID();
         this.anzahlSitzplaetze = anzahlSitzplaetze;
         this.name = name;
@@ -22,13 +22,13 @@ public class Saal {
         this.kinoID = UUID.fromString(kinoID);
     }
 
-    public Saal(String id, String anzahlSitzplaetze, String name, String leinwandhoehe,String kinoID ,boolean dreidfaehigkeit){
+    public Saal(String id, String anzahlSitzplaetze, String name, String leinwandhoehe, String kinoIDs, String dreidfaehigkeit) {
         this.id = UUID.fromString(id);
         this.anzahlSitzplaetze = anzahlSitzplaetze;
         this.name = name;
         this.leinwandhoehe = leinwandhoehe;
         this.dreidfaehigkeit = dreidfaehigkeit;
-        this.kinoID = UUID.fromString(kinoID);
+        this.kinoID = UUID.fromString(kinoIDs);
     }
 
     public UUID getId() {
@@ -47,7 +47,7 @@ public class Saal {
         return leinwandhoehe;
     }
 
-    public boolean isDreidfaehigkeit() {
+    public String isDreidfaehigkeit() {
         return dreidfaehigkeit;
     }
 

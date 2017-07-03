@@ -30,15 +30,14 @@ public class LoadFromJSON {
     private String SaalCon = "Saale.json";
     private String VorstPath = "Vorst.json";
 
-    public void LoadAll (){
-        try{
+    public void LoadAll() {
+        try {
             LoadKinos(KinoCon);
             LoadMovies(MovieCon);
             LoadPersonen(PersonCon);
             LoadSaal(SaalCon);
             LoadVorstellungen(VorstPath);
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             //Handle Exception
         }
     }
@@ -58,7 +57,7 @@ public class LoadFromJSON {
                             jsonObject.get("beschreibung").getAsString(),
                             jsonObject.get("dauer").getAsString(),
                             jsonObject.get("altersbegrenzung").getAsString(),
-                            jsonObject.get("3dfaehigkeit").getAsString(),
+                            jsonObject.get("dreidfaehigkeit").getAsString(),
                             jsonObject.get("sprache").getAsString()
                     )
             );
@@ -80,7 +79,7 @@ public class LoadFromJSON {
                             jsonObject.get("name").getAsString(),
                             jsonObject.get("vorname").getAsString(),
                             jsonObject.get("email").getAsString(),
-                            jsonObject.get("telefonummer").getAsString()
+                            jsonObject.get("telefonnummer").getAsString()
                     )
             );
 
@@ -98,9 +97,9 @@ public class LoadFromJSON {
             JsonObject jsonObject = j.getAsJsonObject();
 
 
-            for (Kino i: Kinobuchungsystem.Kinos
-                 ) {
-                if (i.getID() == jsonObject.get("id").getAsString()){
+            for (Kino i : Kinobuchungsystem.Kinos
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()) {
                     kinoId = i.getID();
                 }
             }
@@ -111,7 +110,7 @@ public class LoadFromJSON {
                             jsonObject.get("name").getAsString(),
                             jsonObject.get("leinwandhoehe").getAsString(),
                             kinoId,
-                            jsonObject.get("dreidfaehigkeit").getAsBoolean()
+                            jsonObject.get("dreidfaehigkeit").getAsString()
                     )
             );
         }
@@ -136,6 +135,7 @@ public class LoadFromJSON {
             );
         }
     }
+
     public void LoadVorstellungen(String path) throws FileNotFoundException {
         parser = new JsonParser();
         String saalID = "";
@@ -148,15 +148,15 @@ public class LoadFromJSON {
             JsonObject jsonObject = j.getAsJsonObject();
 
 
-            for (Saal i: Kinobuchungsystem.saale
+            for (Saal i : Kinobuchungsystem.saale
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()){
+                if (i.getID() == jsonObject.get("id").getAsString()) {
                     saalID = i.getID();
                 }
             }
-            for (Film i: FilmeSammlung.Filme
+            for (Film i : FilmeSammlung.Filme
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()){
+                if (i.getID() == jsonObject.get("id").getAsString()) {
                     filmID = i.getID();
                 }
             }
