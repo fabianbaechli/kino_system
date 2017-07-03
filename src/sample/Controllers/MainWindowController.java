@@ -18,6 +18,7 @@ import sample.Models.Saal;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class MainWindowController implements Initializable {
     @FXML
@@ -97,7 +98,7 @@ public class MainWindowController implements Initializable {
             gridPane.add(timeLabel, 3, 0);
             gridPane.add(priceLabel, 4, 0);
 
-            Vorstellungen.getItems().add(gridPane);
+            //Vorstellungen.getItems().add(gridPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
