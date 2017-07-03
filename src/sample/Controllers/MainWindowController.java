@@ -1,5 +1,6 @@
 package sample.Controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -8,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -17,8 +17,6 @@ import sample.Models.Saal;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -26,8 +24,16 @@ public class MainWindowController implements Initializable {
     private
     JFXListView<GridPane> Vorstellungen;
 
+    @FXML
+    private
+    JFXButton createUser;
+
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+        createUser.setOnMouseClicked((event -> {
+            StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
+        }));
+
         Saal saal = new Saal("1", "123", "127839182", "5 Meter", true);
         addRow(saal, "Iron Man", "12.12.2017", "08:15", 14.95F);
     }
