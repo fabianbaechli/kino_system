@@ -15,7 +15,7 @@ public class Sitzplatz {
         this.platz = platz;
     }
 
-    public String getID() {
-        return SaalID.toString();
+    public UUID getID() {
+        return SaalID;
     }
 }

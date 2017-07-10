@@ -1,53 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="sample.Controllers.ReservationController" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ReservationController">
    <children>
-      <GridPane>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label fx:id="saalId" prefHeight="57.0" prefWidth="91.0" text="Label">
-               <font>
-                  <Font name="Roboto Medium" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="filmName" prefHeight="43.0" prefWidth="153.0" text="Label" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Roboto Medium" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="datum" prefHeight="46.0" prefWidth="91.0" text="Label" GridPane.columnIndex="2">
-               <font>
-                  <Font name="Roboto Medium" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="zeit" prefHeight="43.0" prefWidth="201.0" text="Label" GridPane.columnIndex="3">
-               <font>
-                  <Font name="Roboto Medium" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="preis" prefHeight="43.0" prefWidth="266.0" text="Label" GridPane.columnIndex="4">
-               <font>
-                  <Font name="Roboto Medium" size="13.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
+      <JFXTextField fx:id="saalField" layoutX="186.0" layoutY="21.0" />
+      <JFXTextField fx:id="FimlField" layoutX="186.0" layoutY="77.0" />
+      <JFXTextField fx:id="DateField" layoutX="186.0" layoutY="124.0" />
+      <JFXTextField fx:id="TimeField" layoutX="186.0" layoutY="182.0" />
+      <JFXTextField fx:id="PriceField" layoutX="186.0" layoutY="232.0" />
+      <Label layoutX="68.0" layoutY="29.0" text="Saal" />
+      <Label layoutX="68.0" layoutY="85.0" text="Film" />
+      <Label layoutX="68.0" layoutY="132.0" prefHeight="21.0" prefWidth="54.0" text="Datum" />
+      <Label layoutX="68.0" layoutY="190.0" text="Zeit" />
+      <Label layoutX="68.0" layoutY="240.0" text="Preis" />
+      <JFXComboBox fx:id="comboPerson" layoutX="65.0" layoutY="352.0" prefHeight="31.0" prefWidth="105.0" promptText="person" />
+      <JFXComboBox fx:id="comboSitzplatz" layoutX="249.0" layoutY="352.0" prefHeight="31.0" prefWidth="119.0" promptText="Sitzplatz" />
+      <JFXButton fx:id="bnt_close" layoutX="149.0" layoutY="405.0" text="Abschliessen" />
    </children>
-</StackPane>
+</Pane>

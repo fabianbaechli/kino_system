@@ -49,15 +49,46 @@ public class ReservationController implements Initializable {
     public JFXTextField PriceField;
 
     @FXML
+    public JFXButton bnt_close;
+
+    @FXML
     public JFXComboBox<String> combPerson;
     @FXML
     public JFXComboBox<String> combSitzplatz;
+
+    static UUID sitzplatz ;
+    static UUID person ;
+
+    int selectedPerson;
+    int selectedPlatz;
 
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
         LoadUnits();
+
+        bnt_close.setOnMouseClicked((event -> {
+            Stage employeeStage = new Stage();
+            try {
+                Pane page = (Pane) FXMLLoader.load(Main.class.getResource("View/Confirm.fxml"));
+                Scene scene = new Scene(page);
+                employeeStage.setScene(scene);
+                employeeStage.setTitle("Abschluss");
+                employeeStage.setResizable(false);
+                employeeStage.show();
+            } catch (Exception ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }));
+        combPerson.setOnMouseClicked((event -> {
+            selectedPerson = combPerson.getSelectionModel().selectedIndexProperty().get();
+            person = PersonenSammelung.Personen.get(selectedPerson).getID();
+        }));
+        combSitzplatz.setOnMouseClicked((event -> {
+            selectedPlatz = combSitzplatz.getSelectionModel().selectedIndexProperty().get();
+            sitzplatz = Saal.sitzplätze.get(selectedPlatz).getID();
+        }));
 
     }
 

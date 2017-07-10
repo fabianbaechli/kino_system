@@ -8,10 +8,10 @@ import java.util.UUID;
 public class Person {
 
     private UUID id;
-    private String name;
-    private String vorname;
-    private String email;
-    private String telefonnummer;
+    public String name;
+    public String vorname;
+    public String email;
+    public String telefonnummer;
 
     public Person( String name, String vorname, String email, String telefonnummer) {
         id = UUID.randomUUID();
@@ -29,8 +29,8 @@ public class Person {
         this.telefonnummer = telefonnummer;
     }
 
-    public String getID() {
-        return id.toString();
+    public UUID getID() {
+        return id;
     }
     @Override
     public String toString(){
