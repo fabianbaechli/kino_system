@@ -9,6 +9,7 @@ import sample.JSON.LoadFromJSON;
 import sample.JSON.SaveToJSOn;
 import sample.Models.Person;
 import sample.Models.Saal;
+import sample.Sammlungen.PersonenSammelung;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,8 +58,8 @@ public class createUserController implements Initializable {
             email = inputEmail.getText();
 
             if (checkValidation()){
-                new Person(name,vorname,email,tel);
-                //svt.SaveAll();
+                PersonenSammelung.Personen.add(new Person(name,vorname,email,tel));
+                svt.SavePersonen(SaveToJSOn.PersonCon);
                 Stage stage = (Stage) bntAccept.getScene().getWindow();
                 stage.close();
             }

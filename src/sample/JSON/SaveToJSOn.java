@@ -16,11 +16,11 @@ import java.io.Writer;
  */
 public class SaveToJSOn {
 
-    private String KinoCon = "Kinos.json";
-    private String MovieCon = "Movies.json";
-    private String PersonCon = "Persons.json";
-    private String SaalCon = "Saale.json";
-    private String VorstCon = "Vorst.json";
+    public static String KinoCon = "Kinos.json";
+    public static  String MovieCon = "Movies.json";
+    public static  String PersonCon = "Persons.json";
+    public static  String SaalCon = "Saale.json";
+    public static  String VorstCon = "Vorst.json";
 
     public void SaveAll(){
        SaveMovies(MovieCon);
