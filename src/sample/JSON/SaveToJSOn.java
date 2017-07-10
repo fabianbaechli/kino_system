@@ -47,7 +47,7 @@ public class SaveToJSOn {
     public void SaveSitzplatz(String path) {
         try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
-            gson.toJson(Saal.sitzpl‰tze, writer);
+            gson.toJson(Saal.sitzpl√§tze, writer);
         }
         catch (Exception ex) {
             System.out.println("Didnt write to JSON");

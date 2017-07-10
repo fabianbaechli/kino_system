@@ -218,8 +218,8 @@ public class LoadFromJSON {
             }
             for (Vorstellung i : Kinobuchungsystem.Vorstellungen
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
-                    vostellID = i.getID();
+                if (i.getID().toString().equals(jsonObject.get("id").getAsString())) {
+                    vostellID = i.getID().toString();
                 }
             }
             Kinobuchungsystem.ResSitz.add(
