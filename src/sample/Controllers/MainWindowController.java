@@ -18,9 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import sample.JSON.LoadFromJSON;
 import sample.Main;
-import sample.Models.Film;
 import sample.Models.Saal;
-import sample.Sammlungen.FilmeSammlung;
 import sample.ViewModels.Kinobuchungsystem;
 
 import java.io.IOException;
@@ -38,6 +36,9 @@ public class MainWindowController implements Initializable {
     @FXML
     private
     JFXButton createUser;
+
+    @FXML
+    JFXButton showReservations;
 
     private int selectedItem;
     public static UUID ID;
@@ -64,6 +65,18 @@ public class MainWindowController implements Initializable {
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }));
+
+        showReservations.setOnMouseClicked((event -> {
+            try {
+                StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/showReservations.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("All reservations");
+                stage.setScene(new Scene(stackPane));
+                stage.show();
+            } catch (Exception ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
         }));
 
