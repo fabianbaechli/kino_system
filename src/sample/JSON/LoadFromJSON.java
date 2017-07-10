@@ -214,13 +214,13 @@ public class LoadFromJSON {
 
             for (Sitzplatz i : Saal.sitzplätze
                     ) {
-                if (i.getID().equals(jsonObject.get("id").getAsString())) {
+                if (i.getID().equals(jsonObject.get("sitzplatzIDs").getAsString())) {
                     sitzplatzID = i.getID();
                 }
             }
             for (Vorstellung i : Kinobuchungsystem.Vorstellungen
                     ) {
-                if (i.getID().toString().equals(jsonObject.get("id").getAsString())) {
+                if (i.getID().toString().equals(jsonObject.get("vorstellungID").getAsString())) {
                     vostellID = i.getID();
                 }
             }

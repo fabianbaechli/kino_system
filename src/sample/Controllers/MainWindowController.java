@@ -90,7 +90,7 @@ public class MainWindowController implements Initializable {
 
                     Stage employeeStage = new Stage();
                     try {
-                        Pane page = (Pane) FXMLLoader.load(Main.class.getResource("../Views/CreateReservation.fxml"));
+                        Pane page = FXMLLoader.load(Main.class.getResource("../Views/CreateReservation.fxml"));
                         Scene scene = new Scene(page);
                         employeeStage.setScene(scene);
                         employeeStage.setTitle("ReservationErfassen");
@@ -120,9 +120,8 @@ public class MainWindowController implements Initializable {
                 if (mouseEvent.getClickCount() == 2) {
                     try {
                         Pane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
-                        AnchorPane anchorPane = (AnchorPane) stackPane.getChildren().get(0);
-                        JFXComboBox comboBox = (JFXComboBox) anchorPane.getChildren().get(0);
-                        JFXTextField numberOfParticipants = (JFXTextField) anchorPane.getChildren().get(1);
+                        JFXComboBox comboBox = (JFXComboBox) stackPane.getChildren().get(10);
+                        JFXTextField numberOfParticipants = (JFXTextField) stackPane.getChildren().get(0);
 
                         comboBox.getItems().add("Fabian Bächli");
                         comboBox.getItems().add("Daniel Peters");
@@ -141,7 +140,7 @@ public class MainWindowController implements Initializable {
 
                         }));
                         Stage stage = new Stage();
-                        stage.setTitle("New Node");
+                        stage.setTitle("Create Reservation");
                         stage.setScene(new Scene(stackPane));
                         stage.show();
                     } catch (IOException e) {

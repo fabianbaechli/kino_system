@@ -7,9 +7,9 @@ import java.util.UUID;
  */
 public class ReservationSitzplatz {
 
-    UUID id;
-    UUID vorstellungID;
-    UUID sitzplatzID;
+    public UUID id;
+    public UUID vorstellungID;
+    public UUID sitzplatzID;
 
     public ReservationSitzplatz(String id,UUID sitzplatz, UUID vorst){
         this.id = UUID.fromString(id);

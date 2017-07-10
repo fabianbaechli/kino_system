@@ -99,22 +99,24 @@ public class ReservationController implements Initializable {
     private void LoadUnits() {
         Vorstellung res = getVorstellung();
 
-        saalField.setText(res._saalID.toString());
-        DateField.setText(res._date.toString());
-        TimeField.setText(res._time.toString());
-        FilmField.setText(res._filmID.toString());
-        PriceField.setText(res.toString());
+        if(res != null) {
+            saalField.setText(res._saalID.toString());
+            DateField.setText(res._date.toString());
+            TimeField.setText(res._time.toString());
+            FilmField.setText(res._filmID.toString());
+            PriceField.setText(res.toString());
 
-        comboPerson.getItems().clear();
-        for (Person a : PersonenSammelung.Personen
-                ) {
-            comboPerson.getItems().add(a.toString());
-        }
+            comboPerson.getItems().clear();
+            for (Person a : PersonenSammelung.Personen
+                    ) {
+                comboPerson.getItems().add(a.toString());
+            }
 
-        comboSitzplatz.getItems().clear();
-        for (Sitzplatz b : Saal.sitzplätze
-                ) {
-            comboPerson.getItems().add(b.platz);
+            comboSitzplatz.getItems().clear();
+            for (Sitzplatz b : Saal.sitzplätze
+                    ) {
+                comboPerson.getItems().add(b.platz);
+            }
         }
     }
 
