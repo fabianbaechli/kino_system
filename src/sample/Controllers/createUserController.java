@@ -58,7 +58,7 @@ public class createUserController implements Initializable {
 
             if (checkValidation()){
                 new Person(name,vorname,email,tel);
-                svt.SaveAll();
+                //svt.SaveAll();
                 Stage stage = (Stage) bntAccept.getScene().getWindow();
                 stage.close();
             }
