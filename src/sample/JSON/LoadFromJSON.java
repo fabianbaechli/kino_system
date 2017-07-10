@@ -23,14 +23,14 @@ import java.util.UUID;
 public class LoadFromJSON {
 
     private JsonParser parser;
-    private String KinoCon = "Kinos.json";
-    private String MovieCon = "Movies.json";
-    private String PersonCon = "Persons.json";
-    private String SaalCon = "Saale.json";
-    private String ResSitzCon = "ResSitz.json";
-    private String SitzplatzCon = "Sitzplatz.json";
-    private String VorstPath = "Vorst.json";
-    private String ReservationCon = "Reservation.json";
+    private String KinoCon = "../Kinos.json";
+    private String MovieCon = "../Movies.json";
+    private String PersonCon = "../Persons.json";
+    private String SaalCon = "../Saale.json";
+    private String ResSitzCon = "../ResSitz.json";
+    private String SitzplatzCon = "../Sitzplatz.json";
+    private String VorstPath = "../Vorst.json";
+    private String ReservationCon = "../Reservation.json";
 
     public void LoadAll() {
         try {
@@ -212,8 +212,8 @@ public class LoadFromJSON {
 
             for (Sitzplatz i : Saal.sitzplätze
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
-                    sitzplatzID = i.getID();
+                if (i.getID().equals(jsonObject.get("id").getAsString())) {
+                    sitzplatzID = i.getID().toString();
                 }
             }
             for (Vorstellung i : Kinobuchungsystem.Vorstellungen
@@ -246,13 +246,13 @@ public class LoadFromJSON {
 
             for (Person i : PersonenSammelung.Personen
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
-                    personID = i.getID();
+                if (i.getID().equals(jsonObject.get("id").getAsString())) {
+                    personID = i.getID().toString();
                 }
             }
             for (ReservationSitzplatz i : Kinobuchungsystem.ResSitz
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
+                if (i.getID().equals(jsonObject.get("id").getAsString())) {
                     resSitzID = i.getID();
                 }
             }

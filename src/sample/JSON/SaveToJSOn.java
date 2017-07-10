@@ -14,14 +14,14 @@ import java.io.Writer;
  */
 public class SaveToJSOn {
 
-    public static String KinoCon = "Kinos.json";
-    public static  String MovieCon = "Movies.json";
-    public static  String PersonCon = "Persons.json";
-    public static  String SaalCon = "Saale.json";
-    public static  String VorstCon = "Vorst.json";
-    private String ResCon = "Reservation.json";
-    private String ResSitzCon = "ResSitz.json";
-    private String SitzplatzCon = "Sitzplatz.json";
+    public static String KinoCon = "../Kinos.json";
+    public static  String MovieCon = "../Movies.json";
+    public static  String PersonCon = "../Persons.json";
+    public static  String SaalCon = "../Saale.json";
+    public static  String VorstCon = "../Vorst.json";
+    private String ResCon = "../Reservation.json";
+    private String ResSitzCon = "../ResSitz.json";
+    private String SitzplatzCon = "../Sitzplatz.json";
 
     public void SaveAll(){
         SaveMovies(MovieCon);
