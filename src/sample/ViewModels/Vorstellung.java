@@ -28,10 +28,10 @@ public class Vorstellung {
         _time = new Time(System.currentTimeMillis());
         _preis = preis;
     }
-    public Vorstellung(String VorstellungsID,String saal, String film, String date, String time, int preis) {
+    public Vorstellung(String VorstellungsID,UUID saal, UUID film, String date, String time, int preis) {
         id = UUID.fromString(VorstellungsID);
-        _saalID = UUID.fromString(saal);
-        _filmID = UUID.fromString(film);
+        _saalID = saal;
+        _filmID = film;
         _date = Date.from(Instant.now());
         _time = Time.valueOf(time);
         _preis = preis;

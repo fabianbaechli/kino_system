@@ -8,7 +8,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ReservationController">
    <children>
       <JFXTextField fx:id="saalField" layoutX="186.0" layoutY="21.0" />
-      <JFXTextField fx:id="FimlField" layoutX="186.0" layoutY="77.0" />
+      <JFXTextField fx:id="FilmField" layoutX="186.0" layoutY="77.0" />
       <JFXTextField fx:id="DateField" layoutX="186.0" layoutY="124.0" />
       <JFXTextField fx:id="TimeField" layoutX="186.0" layoutY="182.0" />
       <JFXTextField fx:id="PriceField" layoutX="186.0" layoutY="232.0" />

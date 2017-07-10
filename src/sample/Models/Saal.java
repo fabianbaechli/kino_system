@@ -27,13 +27,13 @@ public class Saal {
         this.kinoID = UUID.fromString(kinoID);
     }
 
-    public Saal(String id, String anzahlSitzplaetze, String name, String leinwandhoehe, String kinoIDs, Boolean dreidfaehigkeit) {
+    public Saal(String id, String anzahlSitzplaetze, String name, String leinwandhoehe, UUID kinoIDs, Boolean dreidfaehigkeit) {
         this.id = UUID.fromString(id);
         this.anzahlSitzplaetze = anzahlSitzplaetze;
         this.name = name;
         this.leinwandhoehe = leinwandhoehe;
         this.dreidfaehigkeit = dreidfaehigkeit;
-        this.kinoID = UUID.fromString(kinoIDs);
+        this.kinoID = kinoIDs;
     }
 
     public UUID getId() {
@@ -56,7 +56,7 @@ public class Saal {
         return dreidfaehigkeit;
     }
 
-    public String getID() {
-        return id.toString();
+    public UUID getID() {
+        return id;
     }
 }

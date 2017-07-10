@@ -11,10 +11,10 @@ public class Reservation {
     UUID _personID;
     UUID _reservationsSitzplatzID;
 
-    public Reservation(String id,String person,String reservationsSitzplatz){
+    public Reservation(String id,UUID person,UUID reservationsSitzplatz){
         ReservationsID = UUID.fromString(id);
-        _personID = UUID.fromString(person);
-        _reservationsSitzplatzID = UUID.fromString(reservationsSitzplatz);
+        _personID = person;
+        _reservationsSitzplatzID = reservationsSitzplatz;
     }
 
     public Reservation(String person,String reservationsSitzplatz){

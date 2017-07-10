@@ -67,10 +67,10 @@ public class Confirm implements Initializable {
 
         LoadUnits();
 
-        bnt_close.setOnMouseClicked((event -> {
+        /*bnt_close.setOnMouseClicked((event -> {
             Stage stage = (Stage) bnt_close.getScene().getWindow();
             stage.close();
-        }));
+        }));*/
 
     }
 
@@ -79,18 +79,20 @@ public class Confirm implements Initializable {
         Person pers = getPerson();
         Sitzplatz platz = getPlatz();
 
-        saalee.setText(res._saalID.toString());
-        Datum.setText(res._date.toString());
-        Zeit.setText(res._time.toString());
-        Film.setText(res._filmID.toString());
-        Preis.setText(res.toString());
+       if (res != null && pers !=null && platz != null){
+           saalee.setText(res._saalID.toString());
+           Datum.setText(res._date.toString());
+           Zeit.setText(res._time.toString());
+           Film.setText(res._filmID.toString());
+           Preis.setText(res.toString());
 
-        Name.setText(pers.name);
-        Vorname.setText(pers.vorname);
-        Email.setText(pers.email);
-        Tel.setText(pers.telefonnummer);
+           Name.setText(pers.name);
+           Vorname.setText(pers.vorname);
+           Email.setText(pers.email);
+           Tel.setText(pers.telefonnummer);
 
-        Platz.setText(platz.platz);
+           Platz.setText(platz.platz);
+       }
 
     }
 
@@ -100,7 +102,7 @@ public class Confirm implements Initializable {
 
         for (Vorstellung a: Kinobuchungsystem.Vorstellungen
                 ) {
-            if (a.getID() == MainWindowController.ID){
+            if (a.getID().equals( MainWindowController.ID)){
                 vor = a;
             }
         }
@@ -113,7 +115,7 @@ public class Confirm implements Initializable {
 
         for (Person b: PersonenSammelung.Personen
              ) {
-            if (b.getID() == ReservationController.person){
+            if (b.getID().equals( ReservationController.person)){
                 person = b;
             }
         }
@@ -126,7 +128,7 @@ public class Confirm implements Initializable {
 
         for (Sitzplatz c: Saal.sitzplätze
              ) {
-            if (c.getID() == ReservationController.sitzplatz){
+            if (c.getID().equals( ReservationController.sitzplatz)){
                 platz = c;
             }
         }

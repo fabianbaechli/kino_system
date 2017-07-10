@@ -11,10 +11,10 @@ public class ReservationSitzplatz {
     UUID vorstellungID;
     UUID sitzplatzID;
 
-    public ReservationSitzplatz(String id,String sitzplatz, String vorst){
+    public ReservationSitzplatz(String id,UUID sitzplatz, UUID vorst){
         this.id = UUID.fromString(id);
-        vorstellungID = UUID.fromString(vorst);
-        sitzplatzID = UUID.fromString(sitzplatz);
+        vorstellungID = vorst;
+        sitzplatzID = sitzplatz;
     }
 
     public ReservationSitzplatz(String sitzplatz, String vorst){
@@ -23,7 +23,7 @@ public class ReservationSitzplatz {
         sitzplatzID = UUID.fromString(sitzplatz);
     }
 
-    public String getID() {
-        return id.toString();
+    public UUID getID() {
+        return id;
     }
 }

@@ -90,7 +90,7 @@ public class MainWindowController implements Initializable {
 
                     Stage employeeStage = new Stage();
                     try {
-                        Pane page = (Pane) FXMLLoader.load(Main.class.getResource("View/CreateReservation.fxml"));
+                        Pane page = (Pane) FXMLLoader.load(Main.class.getResource("../Views/CreateReservation.fxml"));
                         Scene scene = new Scene(page);
                         employeeStage.setScene(scene);
                         employeeStage.setTitle("ReservationErfassen");
@@ -103,9 +103,6 @@ public class MainWindowController implements Initializable {
             }
         });
 
-
-        LoadFromJSON loader = new LoadFromJSON();
-        loader.LoadAll();
     }
 
     private void addRow(Saal saal, String film, String datum, String time, Float price) {
@@ -122,7 +119,7 @@ public class MainWindowController implements Initializable {
             gridPane.setOnMouseClicked((mouseEvent) -> {
                 if (mouseEvent.getClickCount() == 2) {
                     try {
-                        StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
+                        Pane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateReservation.fxml"));
                         AnchorPane anchorPane = (AnchorPane) stackPane.getChildren().get(0);
                         JFXComboBox comboBox = (JFXComboBox) anchorPane.getChildren().get(0);
                         JFXTextField numberOfParticipants = (JFXTextField) anchorPane.getChildren().get(1);

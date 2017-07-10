@@ -9,6 +9,7 @@ import sample.Models.*;
 import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
 import sample.ViewModels.Kinobuchungsystem;
+import sample.ViewModels.Reservation;
 import sample.ViewModels.ReservationSitzplatz;
 import sample.ViewModels.Vorstellung;
 
@@ -23,28 +24,28 @@ import java.util.UUID;
 public class LoadFromJSON {
 
     private JsonParser parser;
-    private String KinoCon = "../Kinos.json";
-    private String MovieCon = "../Movies.json";
-    private String PersonCon = "../Persons.json";
-    private String SaalCon = "../Saale.json";
-    private String ResSitzCon = "../ResSitz.json";
-    private String SitzplatzCon = "../Sitzplatz.json";
-    private String VorstPath = "../Vorst.json";
-    private String ReservationCon = "../Reservation.json";
+    public static String KinoCon = "Kinos.json";
+    public static String MovieCon = "Movies.json";
+    public static String PersonCon = "Persons.json";
+    public static String SaalCon = "Saale.json";
+    public static String ResSitzCon = "ResSitz.json";
+    public static String SitzplatzCon = "Sitzplatz.json";
+    public static String VorstPath = "Vorst.json";
+    public static String ReservationCon = "Reservation.json";
 
     public void LoadAll() {
         try {
             LoadKinos(KinoCon);
             LoadMovies(MovieCon);
-            LoadSitzplatz(SitzplatzCon);
             LoadPersonen(PersonCon);
             LoadSaal(SaalCon);
+            LoadSitzplatz(SitzplatzCon);
             LoadVorstellungen(VorstPath);
             LoadReservationSitzplatz(ResSitzCon);
             LoadReservation(ReservationCon);
 
         } catch (FileNotFoundException e) {
-            //Handle Exception
+            System.out.println(e);
         }
     }
 
@@ -109,38 +110,6 @@ public class LoadFromJSON {
 
         }
     }
-
-    public void LoadSaal(String path) throws FileNotFoundException {
-        parser = new JsonParser();
-        String kinoId = "";
-        Object obj = parser.parse(new FileReader(path));
-
-        JsonArray saale = (JsonArray) obj;
-
-        for (JsonElement j : saale) {
-            JsonObject jsonObject = j.getAsJsonObject();
-
-
-            for (Kino i : Kinobuchungsystem.Kinos
-                    ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
-                    kinoId = i.getID();
-                }
-
-                Kinobuchungsystem.saale.add(
-                        new Saal(
-                                jsonObject.get("id").getAsString(),
-                                jsonObject.get("anzahlSitzplaetze").getAsString(),
-                                jsonObject.get("name").getAsString(),
-                                jsonObject.get("leinwandhoehe").getAsString(),
-                                kinoId,
-                                jsonObject.get("dreidfaehigkeit").getAsBoolean()
-                        )
-                );
-            }
-        }
-    }
-
     public void LoadKinos(String path) throws FileNotFoundException {
         parser = new JsonParser();
         Object obj = parser.parse(new FileReader(path));
@@ -161,10 +130,43 @@ public class LoadFromJSON {
         }
     }
 
+    public void LoadSaal(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        UUID kinoId = UUID.randomUUID();
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray saale = (JsonArray) obj;
+
+        for (JsonElement j : saale) {
+            JsonObject jsonObject = j.getAsJsonObject();
+
+
+            for (Kino i : Kinobuchungsystem.Kinos
+                    ) {
+                if (i.getID().equals(jsonObject.get("id").getAsString())) {
+                    kinoId = i.getID();
+                }
+
+                Kinobuchungsystem.saale.add(
+                        new Saal(
+                                jsonObject.get("id").getAsString(),
+                                jsonObject.get("anzahlSitzplaetze").getAsString(),
+                                jsonObject.get("name").getAsString(),
+                                jsonObject.get("leinwandhoehe").getAsString(),
+                                kinoId,
+                                jsonObject.get("dreidfaehigkeit").getAsBoolean()
+                        )
+                );
+            }
+        }
+    }
+
+
+
     public void LoadVorstellungen(String path) throws FileNotFoundException {
         parser = new JsonParser();
-        String saalID = "";
-        String filmID = "";
+        UUID saalID = UUID.randomUUID();
+        UUID filmID = UUID.randomUUID();
         Object obj = parser.parse(new FileReader(path));
 
         JsonArray Vorstellungen = (JsonArray) obj;
@@ -175,13 +177,13 @@ public class LoadFromJSON {
 
             for (Saal i : Kinobuchungsystem.saale
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
+                if (i.getID().equals(jsonObject.get("_saalID").getAsString())) {
                     saalID = i.getID();
                 }
             }
             for (Film i : FilmeSammlung.Filme
                     ) {
-                if (i.getID() == jsonObject.get("id").getAsString()) {
+                if (i.getID().equals(jsonObject.get("_filmID").getAsString())) {
                     filmID = i.getID();
                 }
             }
@@ -191,7 +193,7 @@ public class LoadFromJSON {
                             saalID,
                             filmID,
                             jsonObject.get("_date").getAsString(),
-                            jsonObject.get("_time").getAsString(),
+                            jsonObject.get("_time").getAsString().split(" ")[0],
                             jsonObject.get("_preis").getAsInt()
                     )
             );
@@ -200,8 +202,8 @@ public class LoadFromJSON {
 
     public void LoadReservationSitzplatz(String path) throws FileNotFoundException {
         parser = new JsonParser();
-        String vostellID = "";
-        String sitzplatzID = "";
+        UUID vostellID = UUID.randomUUID();
+        UUID sitzplatzID = UUID.randomUUID();
         Object obj = parser.parse(new FileReader(path));
 
         JsonArray ResSitz = (JsonArray) obj;
@@ -213,13 +215,13 @@ public class LoadFromJSON {
             for (Sitzplatz i : Saal.sitzplätze
                     ) {
                 if (i.getID().equals(jsonObject.get("id").getAsString())) {
-                    sitzplatzID = i.getID().toString();
+                    sitzplatzID = i.getID();
                 }
             }
             for (Vorstellung i : Kinobuchungsystem.Vorstellungen
                     ) {
                 if (i.getID().toString().equals(jsonObject.get("id").getAsString())) {
-                    vostellID = i.getID().toString();
+                    vostellID = i.getID();
                 }
             }
             Kinobuchungsystem.ResSitz.add(
@@ -234,8 +236,8 @@ public class LoadFromJSON {
 
     public void LoadReservation(String path) throws FileNotFoundException {
         parser = new JsonParser();
-        String personID = "";
-        String resSitzID = "";
+        UUID personID = UUID.randomUUID();
+        UUID resSitzID = UUID.randomUUID();
         Object obj = parser.parse(new FileReader(path));
 
         JsonArray Reservation = (JsonArray) obj;
@@ -247,7 +249,7 @@ public class LoadFromJSON {
             for (Person i : PersonenSammelung.Personen
                     ) {
                 if (i.getID().equals(jsonObject.get("id").getAsString())) {
-                    personID = i.getID().toString();
+                    personID = i.getID();
                 }
             }
             for (ReservationSitzplatz i : Kinobuchungsystem.ResSitz
@@ -256,8 +258,8 @@ public class LoadFromJSON {
                     resSitzID = i.getID();
                 }
             }
-            Kinobuchungsystem.ResSitz.add(
-                    new ReservationSitzplatz(
+            Kinobuchungsystem.Reservation.add(
+                    new Reservation(
                             jsonObject.get("id").getAsString(),
                             resSitzID,
                             personID
