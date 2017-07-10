@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Confirm">
+   <children>
+      <Label fx:id="saal" layoutX="55.0" layoutY="31.0" prefHeight="21.0" prefWidth="80.0" text="Saal" />
+      <Label fx:id="Film" layoutX="55.0" layoutY="87.0" prefWidth="80.0" text="Film" />
+      <Label fx:id="Datum" layoutX="55.0" layoutY="134.0" prefHeight="21.0" prefWidth="80.0" text="Datum" />
+      <Label fx:id="Zeit" layoutX="55.0" layoutY="192.0" prefWidth="80.0" text="Zeit" />
+      <Label fx:id="Preis" layoutX="55.0" layoutY="242.0" prefWidth="80.0" text="Preis" />
+      <Label fx:id="Name" layoutX="257.0" layoutY="77.0" prefHeight="21.0" prefWidth="80.0" text="Name" />
+      <Label fx:id="Vorname" layoutX="255.0" layoutY="31.0" prefHeight="21.0" prefWidth="80.0" text="Vorname" />
+      <Label fx:id="Email" layoutX="255.0" layoutY="134.0" prefHeight="21.0" prefWidth="80.0" text="Email" />
+      <Label fx:id="Tel" layoutX="257.0" layoutY="192.0" prefHeight="21.0" prefWidth="80.0" text="Tel" />
+      <Label fx:id="platz" layoutX="255.0" layoutY="242.0" prefHeight="21.0" prefWidth="80.0" text="Sitzplatz" />
+      <JFXButton fx:id="bnt_close" layoutX="149.0" layoutY="405.0" text="Abschliessen" />
+   </children>
+</Pane>
