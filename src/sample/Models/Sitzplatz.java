@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Sitzplatz {
     private UUID SaalID;
-    private String platz;
+    public String platz;
 
 
     public Sitzplatz(String saalID, String platz) {

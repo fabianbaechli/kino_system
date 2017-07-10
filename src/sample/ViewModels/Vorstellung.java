@@ -40,6 +40,7 @@ public class Vorstellung {
     public UUID getID() {
         return id;
     }
+    @Override
     public String toString(){
         return Integer.toString(_preis);
     }
