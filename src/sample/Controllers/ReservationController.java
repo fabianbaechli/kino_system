@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import sample.JSON.LoadFromJSON;
+import sample.JSON.SaveToJSOn;
 import sample.Main;
 import sample.Models.Film;
 import sample.Models.Person;
@@ -62,6 +63,8 @@ public class ReservationController implements Initializable {
     int selectedPerson;
     int selectedPlatz;
 
+    SaveToJSOn stj = new SaveToJSOn();
+
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -70,6 +73,7 @@ public class ReservationController implements Initializable {
 
         bnt_close.setOnMouseClicked((event -> {
             Stage employeeStage = new Stage();
+            stj.SaveAll();
             try {
                 Pane page = (Pane) FXMLLoader.load(Main.class.getResource("View/Confirm.fxml"));
                 Scene scene = new Scene(page);

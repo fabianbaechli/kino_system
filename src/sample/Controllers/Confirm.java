@@ -38,7 +38,7 @@ import java.util.logging.Logger;
 public class Confirm implements Initializable {
 
     @FXML
-    public Label saal;
+    public Label saalee;
     @FXML
     public Label Film;
     @FXML
@@ -79,7 +79,7 @@ public class Confirm implements Initializable {
         Person pers = getPerson();
         Sitzplatz platz = getPlatz();
 
-        saal.setText(res._saalID.toString());
+        saalee.setText(res._saalID.toString());
         Datum.setText(res._date.toString());
         Zeit.setText(res._time.toString());
         Film.setText(res._filmID.toString());
