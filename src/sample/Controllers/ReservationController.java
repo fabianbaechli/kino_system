@@ -38,15 +38,15 @@ import java.util.logging.Logger;
 public class ReservationController implements Initializable {
 
     @FXML
-    public JFXTextField saalId;
+    public JFXTextField saalField;
     @FXML
-    public JFXTextField filmName;
+    public JFXTextField DateField;
     @FXML
-    public JFXTextField datum;
+    public JFXTextField TimeField;
     @FXML
-    public JFXTextField zeit;
+    public JFXTextField FilmField;
     @FXML
-    public JFXTextField preis;
+    public JFXTextField PriceField;
 
     @FXML
     public JFXComboBox<String> combPerson;
@@ -62,16 +62,34 @@ public class ReservationController implements Initializable {
     }
 
     private void LoadUnits() {
-        
+        Vorstellung res = getVorstellung();
+
+        saalField.setText(res._saalID.toString());
+        DateField.setText(res._date.toString());
+        TimeField.setText(res._time.toString());
+        FilmField.setText(res._filmID.toString());
+        PriceField.setText(res.toString());
+
+        combPerson.getItems().clear();
+        for (Person a : PersonenSammelung.Personen
+                ) {
+            combPerson.getItems().add(a.toString());
+        }
+
+        combSitzplatz.getItems().clear();
+        for (Sitzplatz b : Saal.sitzplätze
+                ) {
+            combPerson.getItems().add(b.platz);
+        }
     }
 
     public Vorstellung getVorstellung() {
 
-        Vorstellung vor = null;
+        Vorstellung vor = null ;
 
-        for (Vorstellung a : Kinobuchungsystem.Vorstellungen
+        for (Vorstellung a: Kinobuchungsystem.Vorstellungen
                 ) {
-            if (a.getID() == MainWindowController.ID) {
+            if (a.getID() == MainWindowController.ID){
                 vor = a;
             }
         }
