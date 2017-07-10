@@ -32,4 +32,8 @@ public class Person {
     public String getID() {
         return id.toString();
     }
+    @Override
+    public String toString(){
+        return name +" "+vorname;
+    }
 }

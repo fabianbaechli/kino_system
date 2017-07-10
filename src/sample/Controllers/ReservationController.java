@@ -19,8 +19,11 @@ import javafx.stage.Stage;
 import sample.JSON.LoadFromJSON;
 import sample.Main;
 import sample.Models.Film;
+import sample.Models.Person;
 import sample.Models.Saal;
+import sample.Models.Sitzplatz;
 import sample.Sammlungen.FilmeSammlung;
+import sample.Sammlungen.PersonenSammelung;
 import sample.ViewModels.Kinobuchungsystem;
 import sample.ViewModels.Reservation;
 import sample.ViewModels.Vorstellung;
@@ -66,6 +69,18 @@ public class ReservationController implements Initializable {
         TimeField.setText(res._time.toString());
         FilmField.setText(res._filmID.toString());
         PriceField.setText(res.toString());
+
+        combPerson.getItems().clear();
+        for (Person a : PersonenSammelung.Personen
+             ) {
+            combPerson.getItems().add(a.toString());
+        }
+
+        combSitzplatz.getItems().clear();
+        for (Sitzplatz b : Saal.sitzplätze
+                ) {
+            combPerson.getItems().add(b.platz);
+        }
     }
 
     public Vorstellung getVorstellung() {
