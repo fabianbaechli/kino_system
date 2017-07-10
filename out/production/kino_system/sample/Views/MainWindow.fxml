@@ -11,8 +11,8 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <JFXDatePicker fx:id="date_picker" layoutX="298.0" layoutY="28.0" />
-            <JFXButton fx:id="createUser" layoutX="713.0" layoutY="455.0" />
-            <JFXListView cellHorizontalMargin="6.0" fx:id="Vorstellungen" fixedCellSize="5.0" layoutX="35.0" layoutY="88.0" prefHeight="278.0" prefWidth="734.0" showTooltip="true" />
+            <JFXButton fx:id="createUser" layoutX="667.0" layoutY="444.0" text="Create User" />
+            <JFXListView fx:id="vorstellungen_anzeige" cellHorizontalMargin="6.0" fixedCellSize="30.0" layoutX="35.0" layoutY="88.0" prefHeight="278.0" prefWidth="734.0" showTooltip="true" />
          </children>
       </AnchorPane>
    </children>

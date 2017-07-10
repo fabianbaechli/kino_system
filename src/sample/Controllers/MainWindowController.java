@@ -44,7 +44,17 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+        Saal saalA = new Saal("123", "Sall A", "15m", "ja", UUID.randomUUID().toString());
+        addRow(saalA, "Iron Man", "12-12-2017", "12:30", 18.00F);
+        addRow(saalA, "Avengers", "12-12-2017", "12:30", 18.00F);
 
+        Saal saalB = new Saal("123", "Sall B", "15m", "ja", UUID.randomUUID().toString());
+        addRow(saalB, "Lion King", "12-12-2017", "13:00", 16.00F);
+        addRow(saalB, "Ninja Turtles", "12-12-2017", "14:00", 1.00F);
+        addRow(saalB, "Transformers", "12-12-2017", "15:00", 15.00F);
+        addRow(saalB, "The Crash", "12-12-2017", "17:00", 20.00F);
+        addRow(saalB, "Iron Man", "12-12-2017", "18:30", 18.00F);
+        addRow(saalB, "Avengers", "12-12-2017", "18:30", 18.00F);
         createUser.setOnMouseClicked((event -> {
             try {
                 StackPane stackPane = FXMLLoader.load(MainWindowController.class.getResource("../Views/CreateUserView.fxml"));
@@ -83,6 +93,7 @@ public class MainWindowController implements Initializable {
 
         LoadFromJSON loader = new LoadFromJSON();
         loader.LoadAll();
+        */
     }
 
     private void addRow(Saal saal, String film, String datum, String time, Float price) {
@@ -135,7 +146,7 @@ public class MainWindowController implements Initializable {
             gridPane.add(timeLabel, 3, 0);
             gridPane.add(priceLabel, 4, 0);
 
-            //Vorstellungen.getItems().add(gridPane);
+            vorstellungen_anzeige.getItems().add(gridPane);
         } catch (IOException e) {
             e.printStackTrace();
         }

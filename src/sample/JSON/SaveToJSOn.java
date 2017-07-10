@@ -14,11 +14,11 @@ import java.io.Writer;
  */
 public class SaveToJSOn {
 
-    private String KinoCon = "Kinos.json";
-    private String MovieCon = "Movies.json";
-    private String PersonCon = "Persons.json";
-    private String SaalCon = "Saale.json";
-    private String VorstCon = "Vorst.json";
+    public static String KinoCon = "Kinos.json";
+    public static  String MovieCon = "Movies.json";
+    public static  String PersonCon = "Persons.json";
+    public static  String SaalCon = "Saale.json";
+    public static  String VorstCon = "Vorst.json";
     private String ResCon = "Reservation.json";
     private String ResSitzCon = "ResSitz.json";
     private String SitzplatzCon = "Sitzplatz.json";
@@ -47,7 +47,7 @@ public class SaveToJSOn {
     public void SaveSitzplatz(String path) {
         try (Writer writer = new FileWriter(path)) {
             Gson gson = new GsonBuilder().create();
-            gson.toJson(Saal.sitzpl√§tze, writer);
+            gson.toJson(Saal.sitzpl‰tze, writer);
         }
         catch (Exception ex) {
             System.out.println("Didnt write to JSON");
