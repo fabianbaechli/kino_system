@@ -29,4 +29,7 @@ public class Person {
         this.telefonnummer = telefonnummer;
     }
 
+    public String getID() {
+        return id.toString();
+    }
 }

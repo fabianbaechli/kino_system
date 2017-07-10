@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 public class Vorstellung {
 
-    public UUID _vorstellungsID;
+    public UUID id;
     public UUID _saalID;
     public UUID _filmID;
     public Date _date;
@@ -21,7 +21,7 @@ public class Vorstellung {
     public int _preis;
 
     public Vorstellung(UUID saal, UUID film, String date, String time, int preis) {
-        _vorstellungsID = UUID.randomUUID();
+        id = UUID.randomUUID();
         _saalID = saal;
         _filmID = film;
         _date = Date.from(Instant.now());
@@ -29,11 +29,18 @@ public class Vorstellung {
         _preis = preis;
     }
     public Vorstellung(String VorstellungsID,String saal, String film, String date, String time, int preis) {
-        _vorstellungsID = UUID.fromString(VorstellungsID);
+        id = UUID.fromString(VorstellungsID);
         _saalID = UUID.fromString(saal);
         _filmID = UUID.fromString(film);
         _date = Date.from(Instant.now());
         _time = Time.valueOf(time);
         _preis = preis;
+    }
+
+    public UUID getID() {
+        return id;
+    }
+    public String toString(){
+        return Integer.toString(_preis);
     }
 }

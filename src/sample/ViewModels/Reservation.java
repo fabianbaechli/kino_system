@@ -16,4 +16,10 @@ public class Reservation {
         _personID = UUID.fromString(person);
         _reservationsSitzplatzID = UUID.fromString(reservationsSitzplatz);
     }
+
+    public Reservation(String person,String reservationsSitzplatz){
+        ReservationsID = UUID.randomUUID();
+        _personID = UUID.fromString(person);
+        _reservationsSitzplatzID = UUID.fromString(reservationsSitzplatz);
+    }
 }

@@ -4,13 +4,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import sample.Models.Film;
-import sample.Models.Kino;
-import sample.Models.Person;
-import sample.Models.Saal;
+import com.sun.org.apache.regexp.internal.RE;
+import sample.Models.*;
 import sample.Sammlungen.FilmeSammlung;
 import sample.Sammlungen.PersonenSammelung;
 import sample.ViewModels.Kinobuchungsystem;
+import sample.ViewModels.ReservationSitzplatz;
 import sample.ViewModels.Vorstellung;
 
 import java.io.FileNotFoundException;
@@ -28,15 +27,22 @@ public class LoadFromJSON {
     private String MovieCon = "Movies.json";
     private String PersonCon = "Persons.json";
     private String SaalCon = "Saale.json";
+    private String ResSitzCon = "ResSitz.json";
+    private String SitzplatzCon = "Sitzplatz.json";
     private String VorstPath = "Vorst.json";
+    private String ReservationCon = "Reservation.json";
 
     public void LoadAll() {
         try {
             LoadKinos(KinoCon);
             LoadMovies(MovieCon);
+            LoadSitzplatz(SitzplatzCon);
             LoadPersonen(PersonCon);
             LoadSaal(SaalCon);
             LoadVorstellungen(VorstPath);
+            LoadReservationSitzplatz(ResSitzCon);
+            LoadReservation(ReservationCon);
+
         } catch (FileNotFoundException e) {
             //Handle Exception
         }
@@ -86,6 +92,24 @@ public class LoadFromJSON {
         }
     }
 
+    public void LoadSitzplatz(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray Sitz = (JsonArray) obj;
+
+        for (JsonElement j : Sitz) {
+            JsonObject jsonObject = j.getAsJsonObject();
+            Saal.sitzplätze.add(
+                    new Sitzplatz(
+                            jsonObject.get("SaalID").getAsString(),
+                            jsonObject.get("platz").getAsString()
+                    )
+            );
+
+        }
+    }
+
     public void LoadSaal(String path) throws FileNotFoundException {
         parser = new JsonParser();
         String kinoId = "";
@@ -102,17 +126,18 @@ public class LoadFromJSON {
                 if (i.getID() == jsonObject.get("id").getAsString()) {
                     kinoId = i.getID();
                 }
+
+                Kinobuchungsystem.saale.add(
+                        new Saal(
+                                jsonObject.get("id").getAsString(),
+                                jsonObject.get("anzahlSitzplaetze").getAsString(),
+                                jsonObject.get("name").getAsString(),
+                                jsonObject.get("leinwandhoehe").getAsString(),
+                                kinoId,
+                                jsonObject.get("dreidfaehigkeit").getAsBoolean()
+                        )
+                );
             }
-            Kinobuchungsystem.saale.add(
-                    new Saal(
-                            jsonObject.get("id").getAsString(),
-                            jsonObject.get("anzahlSitzplaetze").getAsString(),
-                            jsonObject.get("name").getAsString(),
-                            jsonObject.get("leinwandhoehe").getAsString(),
-                            kinoId,
-                            jsonObject.get("dreidfaehigkeit").getAsString()
-                    )
-            );
         }
     }
 
@@ -168,6 +193,74 @@ public class LoadFromJSON {
                             jsonObject.get("_date").getAsString(),
                             jsonObject.get("_time").getAsString(),
                             jsonObject.get("_preis").getAsInt()
+                    )
+            );
+        }
+    }
+
+    public void LoadReservationSitzplatz(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        String vostellID = "";
+        String sitzplatzID = "";
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray ResSitz = (JsonArray) obj;
+
+        for (JsonElement j : ResSitz) {
+            JsonObject jsonObject = j.getAsJsonObject();
+
+
+            for (Sitzplatz i : Saal.sitzplätze
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()) {
+                    sitzplatzID = i.getID();
+                }
+            }
+            for (Vorstellung i : Kinobuchungsystem.Vorstellungen
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()) {
+                    vostellID = i.getID();
+                }
+            }
+            Kinobuchungsystem.ResSitz.add(
+                    new ReservationSitzplatz(
+                            jsonObject.get("id").getAsString(),
+                            vostellID,
+                            sitzplatzID
+                    )
+            );
+        }
+    }
+
+    public void LoadReservation(String path) throws FileNotFoundException {
+        parser = new JsonParser();
+        String personID = "";
+        String resSitzID = "";
+        Object obj = parser.parse(new FileReader(path));
+
+        JsonArray Reservation = (JsonArray) obj;
+
+        for (JsonElement j : Reservation) {
+            JsonObject jsonObject = j.getAsJsonObject();
+
+
+            for (Person i : PersonenSammelung.Personen
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()) {
+                    personID = i.getID();
+                }
+            }
+            for (ReservationSitzplatz i : Kinobuchungsystem.ResSitz
+                    ) {
+                if (i.getID() == jsonObject.get("id").getAsString()) {
+                    resSitzID = i.getID();
+                }
+            }
+            Kinobuchungsystem.ResSitz.add(
+                    new ReservationSitzplatz(
+                            jsonObject.get("id").getAsString(),
+                            resSitzID,
+                            personID
                     )
             );
         }

@@ -13,4 +13,6 @@ public class Kinobuchungsystem {
     public static ObservableList<Kino> Kinos = FXCollections.observableArrayList();
     public static ObservableList<Vorstellung> Vorstellungen = FXCollections.observableArrayList();
     public static ObservableList<Saal> saale = FXCollections.observableArrayList();
+    public static ObservableList<ReservationSitzplatz> ResSitz = FXCollections.observableArrayList();
+    public static ObservableList<Reservation> Reservation = FXCollections.observableArrayList();
 }

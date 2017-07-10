@@ -22,4 +22,8 @@ public class ReservationSitzplatz {
         vorstellungID = UUID.fromString(vorst);
         sitzplatzID = UUID.fromString(sitzplatz);
     }
+
+    public String getID() {
+        return id.toString();
+    }
 }

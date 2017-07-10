@@ -1,5 +1,8 @@
 package sample.Models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.UUID;
 
 /**
@@ -11,9 +14,11 @@ public class Saal {
     private String name;
     private UUID kinoID;
     private String leinwandhoehe;
-    private String dreidfaehigkeit;
+    private Boolean dreidfaehigkeit;
+    public static ObservableList<Sitzplatz> sitzplätze = FXCollections.observableArrayList();
 
-    public Saal(String anzahlSitzplaetze, String name, String leinwandhoehe, String dreidfaehigkeit, String kinoID) {
+
+    public Saal(String anzahlSitzplaetze, String name, String leinwandhoehe, Boolean dreidfaehigkeit, String kinoID) {
         this.id = UUID.randomUUID();
         this.anzahlSitzplaetze = anzahlSitzplaetze;
         this.name = name;
@@ -22,7 +27,7 @@ public class Saal {
         this.kinoID = UUID.fromString(kinoID);
     }
 
-    public Saal(String id, String anzahlSitzplaetze, String name, String leinwandhoehe, String kinoIDs, String dreidfaehigkeit) {
+    public Saal(String id, String anzahlSitzplaetze, String name, String leinwandhoehe, String kinoIDs, Boolean dreidfaehigkeit) {
         this.id = UUID.fromString(id);
         this.anzahlSitzplaetze = anzahlSitzplaetze;
         this.name = name;
@@ -47,7 +52,7 @@ public class Saal {
         return leinwandhoehe;
     }
 
-    public String isDreidfaehigkeit() {
+    public boolean isDreidfaehigkeit() {
         return dreidfaehigkeit;
     }
 
